@@ -1,6 +1,5 @@
 from django.shortcuts import render
-
-
+from ln.models import Prices
 
 def index(request):
 
@@ -12,7 +11,9 @@ def courses(request):
 
 def pricing(request):
 
-    return render(request, 'pricing.html')
+    pricess=Prices.objects.all()
+    return render(request, 'pricing.html',
+         {'pricess':pricess})
 
 def blog(request):
 
