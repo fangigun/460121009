@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Prices(models.Model):
@@ -38,7 +39,7 @@ class Student(models.Model):
     price_ID=models.ForeignKey(Prices,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.Student_ID
 
 
 class CourseInstructor(models.Model):
@@ -47,7 +48,7 @@ class CourseInstructor(models.Model):
     Person_ID=models.ForeignKey(Person,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.Person_ID.Name
 
 
 
@@ -62,7 +63,7 @@ class Course(models.Model):
 
    
     def __str__(self):
-        return self.title
+        return self.Course_ID
 
 
 class Enrolment(models.Model):
@@ -73,9 +74,23 @@ class Enrolment(models.Model):
 
 
     def __str__(self):
-        return self.title    
+        return self.Enrolment_ID   
 
-     
+
+
+class Blog(models.Model):
+
+    Blog_ID =  models.IntegerField(primary_key = True)
+    user =models.ForeignKey(User,on_delete=models.CASCADE)
+    Blog_Title = models.CharField(max_length=50)
+    Blog_Descp = models.CharField(max_length=250)
+    Blog_Date= models.DateField(auto_now_add=True)
+    Blog_Img=models.ImageField(upload_to='blog',null=True,blank=True)
+
+    def __str__(self):
+        return self.Blog_Title
+
+
 
     
         

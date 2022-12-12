@@ -42,8 +42,27 @@
 								</ul>
 							</li>
 							<li><a href="{% url 'contact' %}">Contact</a></li>
-							<li class="btn-cta"><a href="#"><span>Login</span></a></li>
-							<li class="btn-cta"><a href="#"><span>Create a Course</span></a></li>
+							{% if user.is_authenticated %}
+							    <li class="has-dropdown">
+								<a class="nav-link" href="">
+									{{ user.username }}
+								</a>
+								<ul class="dropdown">
+									<li><a href="{% url 'createblog' %}">Create Blog</a></li>
+									<li><a href="#">Create Course</a></li>
+									<li><a href="#">View Course</a></li>
+									<li><a href="#">Create Testomonial</a></li>
+									
+								</ul>
+							    </li>
+							    <a class="nav-link" href="{% url 'logoutaccount' %}">
+									Logout 
+								</a>
+								
+							{% else %}						
+							<li class="btn-cta"><a href="{% url 'loginaccount' %}"><span>Login</span></a></li>
+							<li class="btn-cta"><a href="{% url 'signup' %}"><span>Sign Up</span></a></li>
+							{% endif %}
 						</ul>
 					</div>
 				</div>
@@ -52,7 +71,7 @@
 		</div>
 	</nav>
 
-	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_1.jpg);" data-stellar-background-ratio="0.5">
+	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url('{% static 'images/img_bg_1.jpg' %}');" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">

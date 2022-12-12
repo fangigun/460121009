@@ -5,6 +5,7 @@ from ln.models import Student
 from ln.models import CourseInstructor
 from ln.models import Course
 from ln.models import Enrolment
+from ln.models import Blog
 
 # Register your models here.
 
@@ -14,7 +15,7 @@ class PriceAdmin(admin.ModelAdmin):
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display= []
+    list_display= ["LastName"]
 
 
 class StudentAdmin(admin.ModelAdmin):
@@ -22,7 +23,7 @@ class StudentAdmin(admin.ModelAdmin):
 
 
 class InstructorAdmin(admin.ModelAdmin):
-    list_display= []
+    list_display= ["Instructor_ID"]
 
 
 class CourseAdmin(admin.ModelAdmin):
@@ -32,6 +33,8 @@ class CourseAdmin(admin.ModelAdmin):
 class EnrollAdmin(admin.ModelAdmin):
     list_display= []
 
+class BlogAdmin(admin.ModelAdmin):
+    list_display= ["Blog_Title"]
 
 class Meta:
 
@@ -42,6 +45,7 @@ class Meta:
     model=CourseInstructor
     model=Course
     model=Enrolment
+    model=Blog
 
 
 
@@ -51,6 +55,8 @@ class Meta:
     admin.site.register(CourseInstructor,InstructorAdmin)
     admin.site.register(Course,CourseAdmin)
     admin.site.register(Enrolment,EnrollAdmin)
+    admin.site.register(Blog,BlogAdmin)
+
 
 
 
