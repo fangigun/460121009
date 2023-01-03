@@ -32,26 +32,24 @@
 							<li class="active"><a href="/">Home</a></li>
 							<li><a href="{% url 'courses' %}">Courses</a></li>
 							<li><a href="{% url 'pricing' %}">Pricing</a></li>
-							<li class="has-dropdown">
-								<a href="{% url 'blog' %}">Blog</a>
-								<ul class="dropdown">
-									<li><a href="#">Web Design</a></li>
-									<li><a href="#">eCommerce</a></li>
-									<li><a href="#">Branding</a></li>
-									<li><a href="#">API</a></li>
-								</ul>
-							</li>
+							<li><a href="{% url 'blogs' %}">Blog</a></li>
 							<li><a href="{% url 'contact' %}">Contact</a></li>
 							{% if user.is_authenticated %}
 							    <li class="has-dropdown">
-								<a class="nav-link" href="">
+								<a class="nav-link" href="{% url 'profile' %}">
 									{{ user.username }}
 								</a>
 								<ul class="dropdown">
 									<li><a href="{% url 'createblog' %}">Create Blog</a></li>
-									<li><a href="#">Create Course</a></li>
-									<li><a href="#">View Course</a></li>
-									<li><a href="#">Create Testomonial</a></li>
+									<li><a href="{% url 'testomonial' %}">Create Testomonial</a></li>
+									<li><a href="{% url 'usercourses' %}">View Your Courses</a></li>
+									{% if isins %}
+									<li><a href="{% url 'createcourse' %}">Create Course</a></li>
+									
+									{% else %}
+									<li><a href="{% url 'becomeinst' %}">Become Instructor</a></li>
+									{% endif %}
+
 									
 								</ul>
 							    </li>

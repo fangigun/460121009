@@ -2,11 +2,41 @@
 {% block content %}
 
 
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit">
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+           
+            <div class="input-group mb-3 mt-3">
+                <label for="Blog_Title">Blog Type:</label>
+                <input type="text" class="form-control" placeholder="Your Blogs Title"name="Blog_Title"/>
+            </div>  
+            <div class="input-group mb-3 mt-3">
+                <label for="Blog_Img">Blog Img:</label>
+                <input type="file" class="form-control" name="Blog_Img"/>
+            </div>
+            <div class="input-group mb-3 mt-3">
+                <label for="Blog_Descp">Blog Description:</label>
+                <textarea class="form-control" rows="10" cols="40" id="Blog_Descp" name="Blog_Descp"></textarea>    
+            </div>
+            <p></p>
+                <button type="submit" class="btn btn-info">Send</button>
+        </form>
+    </div>
+</div>
 
-</form>
+
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock content %}

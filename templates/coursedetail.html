@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+{% block content %}
+
+
+<div id="fh5co-explore" class="fh5co-bg-section">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            
+        <div class="card card-body">
+			<form action="" method="post">
+                {% if user.is_authenticated %}
+                <p > {{ course.price_ID.price_title }}</p>
+                <p class="text-primary " style="font-size: 2vw;">Enroll now</p>           
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Enroll</button>
+                {% endif %}
+            </form>
+
+            <img class="img-responsive" src="{{ course.Course_Img.url }}" alt="work" width="360" height="245">           
+            {% if error %}
+            <div class="alert alert-danger mt-3"
+            role="alert">
+            {{ error }}
+            </div>
+            {% endif %}
+        </div>
+		</div>
+        <div class="col-md-9">
+        <div class="card card-body">
+        
+            <p class="text-warning " style="font-size: 1.5vw;">{{ course.Course_title }}</p>    
+                <p>{{ course.Course_Descp }} </p>
+                
+           
+        </div>		
+    </div>
+     
+                   
+         
+    
+    
+   
+
+{% endblock content %}

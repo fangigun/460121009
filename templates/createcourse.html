@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+           
+            <div class="input-group mb-3 mt-3">
+                <label for="Course_title">Course Title:</label>
+                <input type="text" class="form-control" placeholder="Your Course Title"name="Course_title"/>
+            </div>  
+            <div class="input-group mb-3 mt-3">
+                <label for="Course_Descp">Course Description:</label>
+                <textarea class="form-control" rows="10" cols="40" id="Course_Descp" name="Course_Descp"></textarea>    
+            </div>
+            <div class="input-group mb-3 mt-3">
+                <label for="Course_Img">Course Img:</label>
+                <input type="file" class="form-control" name="Course_Img"/>
+            </div>
+            <p></p>
+            <div class="input-group mb-3 mt-3">
+                <label for="Course_title">Select Package:</label>
+                {{form.price_ID}}
+            </div>  
+            <p></p>
+                <button type="submit" class="btn btn-info">Send</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

@@ -13,18 +13,17 @@
 	{% for pri in pricess %}
 					<div class="col-md-3 animate-box">
 						<div class="price-box">
-							<h2 class="pricing-plan">{{ price.price_title }}</h2>
+							<h2 class="pricing-plan">{{ pri.price_title }}</h2>
 							<div class="price"><sup class="currency">$</sup>{{ pri.price }}<small>/month</small></div>
 							<ul class="classes">
 								<li>{{ pri.dahil1 }}</li>
 								<li class="color">{{ pri.dahil2 }}</li>
 								<li>{{ pri.dahil3 }}</li>
-								<li class="color">{{ pri.dahil4 }}</li>
-								<li>{{ pri.dahil5 }}</li>
-								<li class="color">{{ pri.dahil6 }}</li>
-								<li>{{ pri.dahil7 }}</li>
+								
 							</ul>
-							<a href="#" class="btn btn-select-plan btn-sm">Select Plan</a>
+							{% if user.is_authenticated %}
+							<a href="{% url 'buyprice' pri.pk %}" class="btn btn-select-plan btn-sm">Select Plan</a>
+							{% endif %}
 						</div>
 					</div>
 

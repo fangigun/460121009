@@ -2,31 +2,27 @@
 {% load static  %}
 {{ form }}
 {% block content %}
-<div class="container-fluid proj-bottom">
-  <div class="card mb-3">
-    <div class="row g-0">
-    <div>
-    <div class="card-body">
-    <h5 class="card-title">Sign Up</h5>
-    {% if error %}
- <div class="alert alert-danger mt-3" role="alert">
- {{ error }}
- </div>
- {% endif %}
-    <p class="card-text">
-    <form method="POST">
-{% csrf_token %}
- {{ form.as_p }}
- <button type="submit"
- class="btn btn-primary">
- Sign Up
- </button>
- </form>
- </p>
- </div>
- </div>
- </div>
-</div>
+
+<<div class="container-login">
+	<div class="login-container">
+            <div id="output"></div>
+            <div class="avatar"></div>
+            {% if error %}
+            <div class="alert alert-danger mt-3" role="alert">
+            {{ error }}
+            </div>
+            {% endif %}
+            <div class="form-box">
+                <form action="." method="POST">
+                    {% csrf_token %}
+                    <input name="username" type="text" placeholder="username">
+                    <input name="password1" type="password" placeholder="password">
+                    <input name="password2" type="password" placeholder="password2">
+                    <button class="btn btn-info btn-block login" type="submit">Sign up</button>
+                </form>
+            </div>
+        </div>
+        
 </div>
 
 

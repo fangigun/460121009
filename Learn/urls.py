@@ -18,20 +18,17 @@ from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 from ln.views import index
-from ln.views import courses
 from ln.views import pricing
-from ln.views import blog
-from ln.views import contact
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('courses/', courses, name='courses'),
     path('pricing/', pricing, name='pricing'),
-    path('blog/', blog, name='blog'),
-    path('contact/', contact, name='contact'),
+    path('contact/', include('contact.urls')),
     path('accounts/', include('accounts.urls')),
-    path('blogs/', include('blogs.urls'))
+    path('blogs/', include('blogs.urls')),
+    path('courses/',include('courses.urls')),
     
 ]
 

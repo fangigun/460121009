@@ -4,16 +4,19 @@ from ln.models import Course
 from ln.models import Blog
 from ln.models import Student
 from ln.models import CourseInstructor
-
+from ln.models import Testimonial
+from accounts.decarator import allowed_users
 def index(request):
+    
+    
     students=Student.objects.all()
-    coursess=Course.objects.all()
+    courses_s=Course.objects.all()
     inst=CourseInstructor.objects.all()
     toplam=0
     studentt=Student.objects.all()
     blogss=Blog.objects.all()[:3]
     for std in studentt:
-        pricee=Prices.objects.get(price_ID=std.price_ID)
+        pricee=Prices.objects.get(pk=std.price_ID.pk)
         toplam+=pricee.price
     stu_count=0
     ins_count=0
@@ -24,18 +27,16 @@ def index(request):
     for ins in inst:
         ins_count+=1
         
-    for cor in coursess:
+    for cor in courses_s:
         c_count+=1   
-    
-    coursess=Course.objects.all()
+    coursess=Course.objects.all()[:3]
+    test=Testimonial.objects.all()
+   
     return render(request, 'index.html'
-    ,{'coursess':courses,'stu_count':stu_count,'ins_count':ins_count,'c_count':c_count,'toplam':toplam,'blogss':blogss})
+    ,{'coursess':coursess,'stu_count':stu_count,'ins_count':ins_count,'c_count':c_count,'toplam':toplam,'blogss':blogss,'test':test})
     
 
-def courses(request):
-    coursess=Course.objects.all()
-    return render(request, 'courses.html',
-    {'coursess':courses})
+
 
 def pricing(request):
 
@@ -45,16 +46,8 @@ def pricing(request):
     return render(request, 'pricing.html',
          {'pricess':pricess})
 
-def blog(request):
 
-    blogss=Blog.objects.all()
-    return render(request, 'blog.html',
-    {'blogss':blogss})
 
-def contact(request):
-
-    coursess=Course.objects.all()
-    return render(request, 'contact.html')
 
 
 

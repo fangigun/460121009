@@ -28,6 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'b41c3f607ac16e'
+EMAIL_HOST_PASSWORD = 'f4cb1cab42e7ab'
+EMAIL_PORT = '2525'
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +44,8 @@ INSTALLED_APPS = [
     'ln',
     'accounts',
     'blogs',
+    'contact',
+    'courses',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Learn.context_processors.cev_pros'
             ],
         },
     },
